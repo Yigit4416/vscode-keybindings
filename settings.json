@@ -5,89 +5,174 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.lineNumbers": "relative",
-
+  // --- KRİTİK PERFORMANS AYARLARI ---
+  // Vim'in zz komutuyla çakışmaması ve "lag" hissini yok etmek için 
+  // bu animasyonları kapatmak şarttır.
+  "editor.smoothScrolling": false,
+  "editor.cursorSmoothCaretAnimation": "off",
+  "editor.cursorBlinking": "solid",
   "vim.leader": "<Space>",
   "vim.hlsearch": true,
   "vim.normalModeKeyBindingsNonRecursive": [
-    // Navigation wiht ctrl-u and ctrl-d
+    // --- NAVIGASYON (Yarım Sayfa + Ortala) ---
+    // Smooth Scrolling kapalıyken bu ayar artık takılmadan çalışır.
     {
-      "before": ["<C-u>"],
-      "after": ["<C-u>", "z z"]
+      "before": [
+        "<C-u>"
+      ],
+      "after": [
+        "<C-u>",
+        "z",
+        "z"
+      ]
     },
     {
-      "before": ["<C-d>"],
-      "after": ["<C-d>", "z z"]
+      "before": [
+        "<C-d>"
+      ],
+      "after": [
+        "<C-d>",
+        "z",
+        "z"
+      ]
     },
-    // Splits
+    // --- PENCERE BÖLME (Native VS Code Komutları) ---
+    // Bunlar native kalmalı çünkü daha performanslı.
     {
-      "before": ["leader", "v"],
-      "commands": [":vsplit"]
-    },
-    {
-      "before": ["leader", "s"],
-      "commands": [":split"]
-    },
-    // Panes
-    {
-      "before": ["leader", "h"],
-      "commands": ["workbench.action.focusLeftGroup"]
-    },
-    {
-      "before": ["leader", "j"],
-      "commands": ["workbench.action.focusBelowGroup"]
-    },
-    {
-      "before": ["leader", "k"],
-      "commands": ["workbench.action.focusAboveGroup"]
+      "before": [
+        "leader",
+        "v"
+      ],
+      "commands": [
+        "workbench.action.splitEditorRight"
+      ]
     },
     {
-      "before": ["leader", "l"],
-      "commands": ["workbench.action.focusRightGroup"]
+      "before": [
+        "leader",
+        "s"
+      ],
+      "commands": [
+        "workbench.action.splitEditorDown"
+      ]
     },
-    // Window saving, closing etc.
-    { "before": ["leader", "w"], "commands": [":w"] },
-    { "before": ["leader", "q"], "commands": [":q!"] },
-    { "before": ["leader", "x"], "commands": [":x"] },
-    // Nice to have these things
+    // --- PENCERE GEZİNTİSİ ---
     {
-      "before": ["<leader>", "c", "a"],
-      "commands": ["editor.action.quickFix"]
+      "before": [
+        "leader",
+        "h"
+      ],
+      "commands": [
+        "workbench.action.focusLeftGroup"
+      ]
     },
-    // Looking for definition and errors on the cursor
     {
-      "before": ["K"],
-      "commands": ["editor.action.showDefinitionPreviewHover"]
+      "before": [
+        "leader",
+        "j"
+      ],
+      "commands": [
+        "workbench.action.focusBelowGroup"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "k"
+      ],
+      "commands": [
+        "workbench.action.focusAboveGroup"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "l"
+      ],
+      "commands": [
+        "workbench.action.focusRightGroup"
+      ]
+    },
+    // --- DOSYA İŞLEMLERİ ---
+    {
+      "before": [
+        "leader",
+        "w"
+      ],
+      "commands": [
+        "workbench.action.files.save"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "q"
+      ],
+      "commands": [
+        "workbench.action.closeActiveEditor"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "x"
+      ],
+      "commands": [
+        "workbench.action.closeAllEditors"
+      ]
+    },
+    // --- DİĞER ---
+    {
+      "before": [
+        "<leader>",
+        "c",
+        "a"
+      ],
+      "commands": [
+        "editor.action.quickFix"
+      ]
+    },
+    {
+      "before": [
+        "K"
+      ],
+      "commands": [
+        "editor.action.showDefinitionPreviewHover"
+      ]
     }
   ],
   "vim.visualModeKeyBindings": [
-    // Move selected lines while staying in visual mode
     {
-      "before": ["J"],
-      "commands": ["editor.action.moveLinesDownAction"]
+      "before": [
+        "J"
+      ],
+      "commands": [
+        "editor.action.moveLinesDownAction"
+      ]
     },
     {
-      "before": ["K"],
-      "commands": ["editor.action.moveLinesUpAction"]
+      "before": [
+        "K"
+      ],
+      "commands": [
+        "editor.action.moveLinesUpAction"
+      ]
     },
-    // toggle comment selection
     {
-      "before": ["leader", "c"],
-      "commands": ["editor.action.commentLine"]
+      "before": [
+        "leader",
+        "c"
+      ],
+      "commands": [
+        "editor.action.commentLine"
+      ]
     }
   ],
-
   "workbench.sideBar.location": "right",
   "workbench.colorTheme": "GitHub Dark",
   "editor.minimap.enabled": false,
   "workbench.activityBar.location": "top",
   "breadcrumbs.enabled": false,
   "editor.stickyScroll.enabled": false,
-  "editor.fontSize": 18,
-  "workbench.iconTheme": "icons",
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  "editor.fontSize": 14
 }
